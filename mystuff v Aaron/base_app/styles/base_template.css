@@ -1,0 +1,114 @@
+/* 
+  Static CSS for the base.html page goes here.  Since base.html is the common ancestor of all templates of all apps on our site,
+  CSS included here will be placed on *every* page of the site.
+*/
+
+html, body {
+  background-color: #E8E8E8;
+  /*background-color: #EC6523;*/
+  /*background-color: #29ADE2;*/
+
+}
+
+header {
+  /*text-align: left;*/
+  	clear: both;
+	/*background-color: #C0C0C0*/
+  ##background-color: #C0C0C0;
+	
+  height: 140px;
+  	color: #878285;
+  	/*background-color: #FFFFFF;*/
+  	/*padding-top: 10px; */
+
+}
+
+
+.navbar-custom {
+    background-color: #FFFFFF;
+    /*padding-right: 25px; */
+    /*padding-top: 25px; */
+    /*text-align: middle;*/
+    /*border-color: #E7E7E7;*/
+    /*background-color: #29ADE2*/
+}
+
+
+.username{
+    color: White;
+    font-size: 18px;
+    /*background-color: Black;*/
+
+}
+
+
+.top-navbar {
+   /*background-color: #FF6600;*/
+    /*background-color: #3366FF;*/
+    background-color: #3399FF;
+    /*padding-top: 10px;*/
+    /*padding-left: 20px; */
+    /*text-align: middle;*/
+    /*border-color: #E7E7E7;*/
+    /*background-color: #29ADE2*/
+}
+
+.caret{
+  color: #FF6103;
+
+
+}
+.navbar{
+  padding-top: 40px;
+  padding-right: 5px;
+  /*padding-left: 250px;*/
+}
+
+.navigation{
+  backround-color: #A0A0A0;
+}
+
+.left_side{
+  background-color: #A0A0A0;
+}
+.navig-h4 {
+	color: Black;
+  padding-left: 15px;
+
+}
+
+.content{
+  background-color: #FFFFFF;
+}
+
+
+nav, footer {
+	/*clear: both;*/
+	/*color: #DF7401;*/
+	/*background-color: #A0A0A0;*/
+	/*height: 40px;*/
+}
+
+nav ul {
+	margin: 0px;
+	padding : 0px 0px 0px 20px;
+}
+
+nav li {
+	display: inline;
+	margin-right:  40px;
+}
+
+nav li a {
+	color: #1C1C1C;
+
+
+}
+
+nav li a:hover, nav li a.current {
+	color: #DF7401;
+}
+
+nav div {
+	padding: 5px 0px 5px 30px;
+}

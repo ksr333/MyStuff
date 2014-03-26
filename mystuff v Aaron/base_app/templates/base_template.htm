@@ -1,0 +1,154 @@
+## this is the skeleton of all pages on our site - it defines the basic structure with our menus, sidebars, etc.
+## by naming this file with .htm, it can't be viewed directly (urls.py only allows full .html)
+
+## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
+<%! from base_app import static_files %>
+<%  static_renderer = static_files.StaticRenderer(self) %>
+
+<!DOCTYPE html>
+
+<html>
+  <meta charset="UTF-8">
+
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/base_app/styles/bootstrap.css">
+
+    <!-- It may have to be like this: -->
+    <script src = "/static/base_app/scripts/jquery.form.js"></script>
+    <script src = "/static/base_app/scripts/jquery.loadmodal.js"></script>
+    <!--<script src = "/static/base_app/scripts/base_template.js"></script>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/static/base_app/scripts/bootstrap.js"></script>
+  
+    <!--render the css-->
+    ${ static_renderer.get_template_css(request, context)  }
+
+
+    <title>Meyers Photography</title>
+  
+  </head>
+  
+  <body>
+      <header>
+        <div class="row">
+          <div class = "logo">
+            <div class="col-md-2">
+            <a id = "logo" class="navbar-brand" href="/homepage/index"><IMG SRC="${ STATIC_URL }base_app/images/MAvatar.png" ALT="some text"  height="60" width="60"></a>
+            </div>
+          </div>
+          <div class = "col-md-10">
+            <nav class = navbar align = "right">       
+            <a href = "/catalog/shopping_cart"><button class = "btn btn-success"><img src ="${ STATIC_URL }base_app/images/cart.png" HEIGHT="17" WIDTH = "17"> Cart</button></a>
+                <!--Code to handle the logging in of different types of users.-->
+                % if request.user.username:
+                    <li class = "dropdown" align = "left">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <button type="button" class = "btn btn-default" id="username"> Hello <strong>${request.user.first_name}! </strong><span class="caret"></span></button></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/customer/account_edit/${request.user.id}">Account Info</a></li>
+                            <li><a id = "password_edit_button">Change Password</a></li>
+                            <li><a href="/customer/account_cancel/${request.user.id}">Cancel Account</a></li>
+                            <li><a href="/customer/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                % else:
+                    <button type ="button" class = "btn btn-default" id = "login_button">Login / Sign Up</button>
+                % endif
+
+            </nav> 
+          </div>
+        </div>  
+        <div class = "row"> 
+          <div class="col-md-12">
+              <nav class = "top-navbar" navbar>
+                <ul class="nav nav-pills">
+
+                  % if request.user.is_staff:
+                    <li>
+                      <a href="/manager/store_list"><strong>Admin Tools</strong></a>
+                    </li>
+                    <li>
+                      <div class="btn-group" align = "left">
+                        <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Customer Options<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="/catalog/products_list/"><strong>Products</strong></a></li>
+                          <li><a href=""><strong>Services</strong></a></li>
+                          <li><a href=""><strong>My Albums</strong></a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  % else:
+                    <li><a href="/catalog/products_list/"><strong>Products</strong></a></li>
+                    <li><a href=""><strong>Services</strong></a></li>
+                    <li><a href=""><strong>My Albums</strong></a></li>
+                  % endif
+                </ul>
+              </nav>
+          </div>  
+        </div>
+
+      </header>
+
+<br>
+
+      ##This is for my left-side navigation
+      <div class="row">
+        <div class="col-md-2">
+          <%block name="left_side">
+
+          </%block> 
+        </div>
+      
+        ##This is for my content 
+        <div class="col-md-9">
+          <%block name="content">
+             Site content goes here in sub-templates.
+          </%block>
+        </div>
+      </div>
+
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <footer>
+        ##This is for my footer
+
+          <%block name="footer">
+            <div class="row">
+
+                <div class="col-md-4">
+                </div>
+
+                    <div class="col-md-4">
+                        <p align="center" >
+                            <img  src="${ STATIC_URL }base_app/images/MLogo.png" ALT="some text"  height="70" width="160">
+                            <ul class="nav nav-pills nav-stacked" align="center">
+                                <li id = "footer_logo"><a href="#">About Us</a></li>
+                                <li><a href="#">Terms and Conditions</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </p>
+                    </div>
+
+                <div class="Col-md-4">
+                </div>
+
+            </div>
+          </%block>
+      </footer>
+  </body>
+
+  <!--render the JS for this page (placed here at the end because browsers apparently load faster when JS is at the end)-->
+  <!--render the js-->
+  ${ static_renderer.get_template_js(request, context)  }
+</html>
+

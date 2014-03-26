@@ -1,0 +1,55 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+<%inherit file="base.htm"/>
+
+<%block name="content">
+
+    <!--<div class="container" align="left">-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-3">-->
+                <!--<form action="#" method="get">-->
+                    <!--<div class="input-group">-->
+                        <!--&lt;!&ndash; USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH &ndash;&gt;-->
+                        <!--<input class="form-control" id="system-search" name="q" placeholder="Search for" required>-->
+                        <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button type="submit" class="btn btn-default">GO!</button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+        <div class = "row">
+            <div class="col-md-12">
+                <table class="table table-list-search">
+                    <thead>
+                        <tr>
+                            <th width="15%">Name</th>
+                            <th width="15%">Description</th>
+                            <th width="40%">Image</th>
+                            <th width="10%">Price</th>
+                            <th width="5%"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        %for item in product_specification_key:
+                            <tr>
+                                <td><h3>${ item.name }</h3></td>
+                                <td>${ item.description }</td>
+                                <td><img src ="${ item.product_image }" alt="" style="height: 160px; width: 40%; display: block;"></td>
+                                <td>$ ${ item.sale_price}</td>
+                                <td>
+                                    <a href="/catalog/shopping_cart_edit/${ item.id }/1/">Add to Cart</a>
+                                        <!--<button class="btn btn-success"><img src ="${ STATIC_URL }base_app/images/cart.png" HEIGHT="20" WIDTH = "20">Add to Cart-->
+                                        <!--</button></a>-->
+                                </td>
+                            </tr>
+                        %endfor
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+</%block>

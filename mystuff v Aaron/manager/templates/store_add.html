@@ -1,0 +1,16 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+<%inherit file="base.htm"/>
+
+<%block name="content">
+    <form method="Post">
+        <table>
+            <tbody>
+                ${ form }
+            </tbody>
+        </table>
+        <br>            
+            <a href = "/manager/store_list/" class="btn btn-default">Back</a>
+            <input class = "btn btn-default" type="submit" value = "Add Store">
+    </form>
+</%block>

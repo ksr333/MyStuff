@@ -1,0 +1,54 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+<%inherit file="base.htm"/>
+
+<%block name="content">
+    <div class="row-md">
+        <h1>Stores: </h1>
+    </div>
+    
+
+    <div class="row-md">
+        <p align="right">
+            <a href="/manager/store_add/" class="btn btn-default">
+                <img src="${ STATIC_URL }base_app/images/add.png" HEIGHT="20" WIDTH = "20">
+            </a>
+        </p>
+    </div>
+
+    <table class = "table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Manager</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            %for s in store_key:
+                <tr>
+                    <td>${ s.location_name }</td>
+                    <td><a href = "/account/user_edit/${ s.id }/">${ s.manager.last_name }, ${s.manager.first_name }</a></td>
+                    <td>${ s.street }</td>
+                    <td>${ s.city }</td>
+                    <td>${ s.state }</td>
+                    <td>${ s.zipcode }</td>
+                    <td>${ s.country }</td>
+                    <td>
+                        <a id = "add_button" href="/manager/store_edit/${ s.id }/"> 
+                            <img src ="${ STATIC_URL }base_app/images/edit.png" HEIGHT="20" WIDTH = "20">
+                        </a>
+                        <a href="/manager/store_delete/${ s.id }/delete"> 
+                            <img src ="${ STATIC_URL }base_app/images/trash.png" HEIGHT="25" WIDTH = "25">
+                        </a>
+                    </td>
+                </tr>
+            %endfor
+        </tbody>
+    </table>
+</%block>  

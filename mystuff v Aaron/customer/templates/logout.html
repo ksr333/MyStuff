@@ -1,0 +1,40 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+##<%inherit file="base.htm"/>
+
+<link rel="stylesheet" href="/static/base_app/styles/bootstrap.css"></link>
+##<!-- Latest compiled and minified JavaScript -->
+<script src="/static/base_app/scripts/bootstrap.js"></script>
+
+<div class = 'row'>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>  
+<div class = "row">
+    <div class="col-md-4 col-md-offset-4">
+        <img src="${ STATIC_URL }base_app/images/logo2.png" HEIGHT="80" WIDTH="180"/>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h3>You have logged out.
+        <br>
+        <small>Would you like to log back in?</small>
+        </h3>
+        <br>
+        <br>
+
+        
+                <p align = "center">            
+                    <a href = "/account/login/" class="btn btn-default">Login</a>
+                    ##<input class = "btn btn-default" type="submit" value = "Login">
+                </p>
+      
+    </div>
+</div>

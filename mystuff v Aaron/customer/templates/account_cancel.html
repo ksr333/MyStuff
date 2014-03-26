@@ -1,0 +1,13 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+<%inherit file="base.htm"/>
+
+<%block name="content">
+    <div class = "col-md-12">
+        <p align = "center">
+            <h3>Are you sure you want to delete your account?</h3>
+            <a href = "/homepage/index" class="btn btn-default">Back</a>
+            <a href = "/customer/account_delete" class = "btn btn-default" >Delete</a>
+    </p>
+    </div>
+</%block>

@@ -1,0 +1,14 @@
+<%inherit file="base_ajax_template.htm"/>
+
+<%block name = "content">
+    <form method="POST" action="/customer/login">
+        <table>
+            <tbody>
+                 ${form}
+            </tbody>
+        </table>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Login"/>
+        <a href="/customer/account_create" class="btn btn-primary">Create New Account</a>
+    </form>
+</%block>

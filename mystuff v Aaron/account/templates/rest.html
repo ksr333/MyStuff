@@ -1,0 +1,38 @@
+<!doctype html>
+    <html>
+        <head>
+            <title>REST API Example</title>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        </head>
+        <body style="padding: 2em;">
+            <h1>REST API Example</h1>
+            <pre>
+
+            Endpoint: http://dithers.cs.byu.edu/iscore/api/v1/charges
+            Valid credit card: Visa, 4732817300654, Exp. 10/14, CVC 411, Cardholder Name: Cosmo Limesandal
+
+            Sample Charge Creation:
+            curl http://dithers.cs.byu.edu/iscore/api/v1/charges \
+            -d apiKey=YOUR_API_KEY \
+            -d currency=usd \
+            -d amount=5.99 \
+            -d type=Visa \
+            -d number=4732817300654 \
+            -d exp_month=10 \
+            -d exp_year=14 \
+            -d cvc=411 \
+            -d "name=Cosmo Limesandal" \ -d "description=Charge for cosmo@is411.byu.edu"
+
+            Query Charges: curl --get http://dithers.cs.byu.edu/iscore/api/v1/charges \
+            -d apiKey=YOUR_API_KEY
+
+            </pre>
+            <button type="button" class="btn btn-primary" id="charge">Charge</button>
+            <button type="button" class="btn btn-success" id="queryCharges">Query Charges</button> ⑤ <input type="text" id="chargeId">
+            <br />
+            <div id="message"></div>
+        </body>
+    </html>

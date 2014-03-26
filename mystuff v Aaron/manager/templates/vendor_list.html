@@ -1,0 +1,74 @@
+##Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+
+<%inherit file="base.htm"/>
+
+<%block name="content">
+    <div class="row">
+        <!--##<div class = "col-md-4">-->
+            <h1>Vendors: </h1>
+        <!--##</div>-->
+
+        <!--##<div class = "col-md-1"-->
+        <!--##</div>-->
+
+        <!--##<div class = "col-md-3"-->
+            <!--##<form class="navbar-form navbar-right" role="search" align="right">-->
+                <!--##<div class="form-group">-->
+                    <!--##<input type="text" class="form-control" placeholder="Search">-->
+                <!--##<button type="submit" class="btn btn-default">Submit</button>-->
+                <!--##</div>-->
+            <!--##</form>-->
+        <!--##</div>-->
+    </div>
+
+
+    <div class="row-md">
+        <p align="right">
+            <a href="/manager/vendor_add/" class="btn btn-default">
+                <img src="${ STATIC_URL }base_app/images/add.png" HEIGHT="30" WIDTH = "30">
+                </a>
+            </a>
+        </p>
+    </div>
+
+
+
+    ##<table class = "table table-striped table-condensed">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>street</th>
+                <th>City</th>
+                <th>Zipcode</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            %for v in vendor_key:
+                <tr>
+                    <td>${ v.name }</td>
+                    <td>${ v.street }</td>
+                    <td>${ v.city }</td>
+                    <td>${ v.state }</td>
+                    <td>${ v.zipcode }</td>
+                    <td>${ v.country }</td>
+                    <td>${ v.phone }</td>
+                    <td>${ v.contact }</td>
+                    <td>
+                        <a href="/manager/vendor_edit/${ v.id }/">
+                            <img src ="${ STATIC_URL }base_app/images/edit.png" HEIGHT="20" WIDTH = "20">
+                            </a>
+                        </a>                        
+                        <a href="/manager/vendor_delete/${ v.id }/delete">
+                            <img src ="${ STATIC_URL }base_app/images/trash.png" HEIGHT="25" WIDTH = "25">
+                            </a>
+                        </a> 
+                    </td>
+                </tr>
+            %endfor
+        </tbody>
+    </table>
+</%block>  
